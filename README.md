@@ -20,15 +20,9 @@ To do so, navigate to the `server` folder and then run:
 npm run setup
 ```
 
-or using yarn:
-
-```
-yarn setup
-```
-
 This will install all dependencies, run [ESLint](https://eslint.org/), [tests](https://jestjs.io/) and compile the code using [Babel](https://babeljs.io/).
 
-Once this script has finished, you can start the [Express.js](https://expressjs.com/) server by running `npm start` or `yarn start`.
+Once this script has finished, you can start the [Express.js](https://expressjs.com/) server by running `npm start`.
 
 ### Available endpoints
 
@@ -51,4 +45,12 @@ There are three endpoints available. They are all prefixed with `/api/v1`. Let's
 
 ### Setup
 
-The project was bootstrapped with CRA so there's no 
+The project was bootstrapped with [CRA](https://github.com/facebook/create-react-app). All you have to do to get the client up and running is to navigate to the `client` folder and run:
+
+```
+npm run setup
+```
+
+This will install all dependencies, run ESLint, tests and build the app using `react-scripts`.
+
+If you want to run the development server, you'll need to run `npm start`. Otherwise, follow the output from the terminal to serve the built app.
