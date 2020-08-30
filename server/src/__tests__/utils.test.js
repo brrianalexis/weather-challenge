@@ -1,4 +1,8 @@
-import { setParamsInUrl } from '../utils';
+import { setParamsInUrl, getCity } from '../utils';
+import { IP_API_ENDPOINT } from '../constants';
+import Axios from 'axios';
+
+jest.mock('axios');
 
 describe('setParamsInUrl', () => {
 	test('should set values provided as an array in the second argument on the URL provided in the first argument', () => {
@@ -34,5 +38,21 @@ describe('setParamsInUrl', () => {
 				'F',
 			])
 		).toBe('https://somefancyapi.com/api/parameter=F&another_parameter={2}');
+	});
+});
+
+describe('getCity', () => {
+	test('returns city data from ip-api', async () => {
+		Axios.get.mockResolvedValueOnce({
+			data: {
+				city: 'Caseros',
+			},
+		});
+
+		const data = await getCity();
+
+		expect(Axios.get).toHaveBeenCalledTimes(1);
+		expect(Axios.get).toHaveBeenCalledWith(IP_API_ENDPOINT);
+		expect(data).toBe('Caseros');
 	});
 });

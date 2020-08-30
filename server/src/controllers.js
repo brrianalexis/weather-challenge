@@ -1,6 +1,6 @@
 import Axios from 'axios';
-import { setParamsInUrl } from './utils';
-import { FORECAST_BY_CITY_ENDPOINT, IP_API_ENDPOINT, WEATHER_BY_CITY_ENDPOINT } from './constants';
+import { setParamsInUrl, getCity } from './utils';
+import { FORECAST_BY_CITY_ENDPOINT, WEATHER_BY_CITY_ENDPOINT } from './constants';
 
 /**
  * @description Gets the city from ip-api and returns it
@@ -9,9 +9,7 @@ import { FORECAST_BY_CITY_ENDPOINT, IP_API_ENDPOINT, WEATHER_BY_CITY_ENDPOINT } 
  */
 export const getLocation = async (req, res) => {
 	try {
-		const {
-			data: { city },
-		} = await Axios.get(IP_API_ENDPOINT);
+		const city = await getCity();
 		res.status(200).send({ city });
 	} catch (err) {
 		res.status(500).send(err);
@@ -30,9 +28,7 @@ export const getCurrent = async (req, res) => {
 
 	if (city === undefined) {
 		try {
-			const {
-				data: { city: ipApiCity },
-			} = await Axios.get(IP_API_ENDPOINT);
+			const ipApiCity = await getCity();
 
 			const { data } = await Axios.get(
 				setParamsInUrl(WEATHER_BY_CITY_ENDPOINT, [ipApiCity, process.env.OPENWEATHER_API_KEY])
@@ -67,9 +63,7 @@ export const getForecast = async (req, res) => {
 
 	if (city === undefined) {
 		try {
-			const {
-				data: { city: ipApiCity },
-			} = await Axios.get(IP_API_ENDPOINT);
+			const ipApiCity = await getCity();
 
 			const {
 				data: { list, city: openWeatherCity },
