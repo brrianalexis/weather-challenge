@@ -9,7 +9,7 @@
 		"test": "npx jest",
 		"test:watch": "npx jest --watch",
 		"lint": "eslint ./src --fix",
-		"setup": "yarn && yarn lint && yarn test && yarn build"
+		"setup": "npm install && npm run lint && npm test && npm run build"
 	},
 	"license": "MIT",
 	"devDependencies": {

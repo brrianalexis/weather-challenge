@@ -45,3 +45,10 @@ There are three endpoints available. They are all prefixed with `/api/v1`. Let's
 - `forecast[/city]`
 
   Here `/city` is optional. If it is provided, it will return a 5 day weather forecast for that city. Otherwise, it will first get the city via ip-api and then return the weather forecast for that location.
+
+
+## Front-end
+
+### Setup
+
+The project was bootstrapped with CRA so there's no 
