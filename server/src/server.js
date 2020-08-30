@@ -15,6 +15,8 @@ app.use(helmet());
 
 app.use('/api/v1', router);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
 	console.log(`${chalk.blue.bold('[INFO]:')} Express.js server listening on port ${PORT}!`);
 });
+
+export { server };
