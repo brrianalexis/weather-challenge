@@ -32,7 +32,6 @@ describe('routes', () => {
 			'weather',
 			'wind',
 			'wind.deg',
-			'wind.gust',
 			'wind.speed',
 		],
 		expectedCurrentWeatherProps = ['id', 'main', 'description', 'icon'],
